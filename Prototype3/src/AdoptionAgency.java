@@ -110,6 +110,18 @@ public class AdoptionAgency {
 
     public int totalInventory() { return inventory.totalInventory(); }
 
+    public User search(int userID) {
+        return userList.search(userID);
+    }
+
+    public User search(String firstName, String lastName) {
+        return userList.search(firstName, lastName);
+    }
+
+    public User search(String username) {
+        return userList.search(username);
+    }
+
     public String getAdopterInformation(int userID) {
         return userList.getAdopterInformation(userID);
     }

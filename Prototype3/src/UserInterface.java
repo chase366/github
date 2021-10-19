@@ -143,8 +143,7 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter userID: " );
         int userID = scanner.nextInt();
-        agency.get
-
+        agency.getAdopterInformation(userID);
     }
 
     public void numberOfUsers() {

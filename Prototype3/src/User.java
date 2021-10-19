@@ -88,7 +88,6 @@ public class User {
         return role;
     }
 
-
     @Override
     public String toString() {
         return "userID: " + userID + "\n" +
