@@ -18,7 +18,12 @@ public class Cat extends Animal {
         this.catID = catID;
     }
 
-    public int getBirdID() {
+    public int getCatID() {
         return catID;
+    }
+
+    @Override
+    public String getAnimalType() {
+        return "cat";
     }
 }

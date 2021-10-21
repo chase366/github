@@ -64,4 +64,12 @@ public class Animal {
     public boolean getVaccinationStatus() {
         return shots;
     }
+
+    /**
+     * Return the type of animal this is. The subclasses
+     * override this method.
+     * @return
+     */
+    public String getAnimalType() { return ""; }
+
 }

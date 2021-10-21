@@ -21,4 +21,9 @@ public class Bird extends Animal {
     public int getBirdID() {
         return birdID;
     }
+
+    @Override
+    public String getAnimalType() {
+        return "bird";
+    }
 }

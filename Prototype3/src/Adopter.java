@@ -23,6 +23,11 @@ public class Adopter extends User {
     }
 
     @Override
+    public String getUserType() {
+        return "adopter";
+    }
+
+    @Override
     public String toString() {
         return "userID: " + super.userID + "\n" +
                 "adopterID: " + this.adopterID + "\n" +

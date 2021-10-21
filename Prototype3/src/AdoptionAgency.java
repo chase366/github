@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class AdoptionAgency {
     private Inventory inventory;
@@ -26,7 +28,7 @@ public class AdoptionAgency {
         return inventory.removeAnimal(animalID);
     }
 
-    public void addUser(String userType) {
+    public User addUser(String userType) {
         Scanner scanner = new Scanner(System.in);
         int userTypeID = 0; // adminID or adopterID
 
@@ -80,6 +82,7 @@ public class AdoptionAgency {
                                     email, dateOfBirth, role);
         }
         userList.addUser(user);
+        return user;
     }
 
     public boolean verifyUserExists(String username, String password) {
@@ -110,16 +113,22 @@ public class AdoptionAgency {
 
     public int totalInventory() { return inventory.totalInventory(); }
 
-    public User search(int userID) {
+    public User searchUsers(int userID) {
         return userList.search(userID);
     }
 
-    public User search(String firstName, String lastName) {
+    public User searchUsers(String firstName, String lastName) {
         return userList.search(firstName, lastName);
     }
 
-    public User search(String username) {
+    public User searchUsers(String username) {
         return userList.search(username);
+    }
+
+    public List<Animal> searchAnimals(String breedName) { return inventory.searchAnimals(breedName); }
+
+    public List<Animal> filter(String animalType) {
+        return inventory.filter(animalType);
     }
 
     public String getAdopterInformation(int userID) {

@@ -22,6 +22,10 @@ public class Admin extends User {
         this.adminID = adminID;
     }
 
+    @Override
+    public String getUserType() {
+        return "admin";
+    }
 
     @Override
     public String toString() {

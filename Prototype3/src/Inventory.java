@@ -105,6 +105,41 @@ public class Inventory {
     }
 
     /**
+     * Search for animals by breed name
+     * @param breedName
+     * @return
+     */
+    public List<Animal> searchAnimals(String breedName) {
+        String s = breedName.replaceAll(" ", ""); // Remove white spaces in breedName string
+        List<Animal> list = new ArrayList();
+        for (int i = 0; i < animals.size(); i++) { // Iterate through inventory of animals and find all animals of that breed
+            Animal animal = animals.get(i);
+            String otherBreedName = animal.getBreed();
+            if (s.equals(otherBreedName)) {
+                list.add(animal);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * Filter by animal
+     * @param animalType
+     * @return
+     */
+    public List<Animal> filter(String animalType) {
+        List<Animal> list = new ArrayList();
+        for (int i = 0; i < animals.size(); i++) { // Iterate through list of animals
+            Animal animal = animals.get(i); // Get an animal/element
+            String type = animal.getAnimalType(); // Get the type fo animal
+            if (animalType.equals(type)) { // If the type of animal is equal to what the user specified for animalType, add to list
+                list.add(animal);
+            }
+        }
+        return list;
+    }
+
+    /**
      * Search for a supply
      * @param supplyID
      * @return
