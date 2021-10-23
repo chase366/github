@@ -97,8 +97,8 @@ public class Inventory {
         // Iterate through list of animals
         for (int i = 0; i < animals.size(); i++) {
             Animal animal = animals.get(i); // Get an element/animal
-            int otheraAnimalID = animal.getAnimalID(); // Get that animal's animalID
-            if (animalID == otheraAnimalID) // Compare animalID with otherAnimalID. If they match return the animal
+            int otherAnimalID = animal.getAnimalID(); // Get that animal's animalID
+            if (animalID == otherAnimalID) // Compare animalID with otherAnimalID. If they match return the animal
                 return animal;
         }
         return null;
@@ -110,12 +110,11 @@ public class Inventory {
      * @return
      */
     public List<Animal> searchAnimals(String breedName) {
-        String s = breedName.replaceAll(" ", ""); // Remove white spaces in breedName string
         List<Animal> list = new ArrayList();
         for (int i = 0; i < animals.size(); i++) { // Iterate through inventory of animals and find all animals of that breed
             Animal animal = animals.get(i);
             String otherBreedName = animal.getBreed();
-            if (s.equals(otherBreedName)) {
+            if (breedName.equals(otherBreedName)) {
                 list.add(animal);
             }
         }

@@ -26,4 +26,9 @@ public class Cat extends Animal {
     public String getAnimalType() {
         return "cat";
     }
+
+    @Override
+    public int getUniqueAnimalID() {
+        return catID;
+    }
 }

@@ -42,4 +42,12 @@ public class Supplies {
     public double getPricePerUnit() {
         return pricePerUnit;
     }
+
+    @Override
+    public String toString() {
+        return "supplyID: " + supplyID +
+                "\nsupplyName: " + supplyName +
+                "\nquantity: " + quantity +
+                "\npricePerUnit: " + pricePerUnit;
+    }
 }

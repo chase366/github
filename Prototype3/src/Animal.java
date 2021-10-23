@@ -72,4 +72,23 @@ public class Animal {
      */
     public String getAnimalType() { return ""; }
 
+    /**
+     * Get the specific dogID, catID, or birdID;
+     */
+    public int getUniqueAnimalID() { return 0; };
+
+    /**
+     * Get information on animal
+     */
+    @Override
+    public String toString() {
+        return "animalID: " + animalID +
+                "\nanimalType " + getAnimalType() +
+                "\nanimalTypeID: " + getUniqueAnimalID() +
+                "\nBreed: " + breed +
+                "\nWeight: " + weight +
+                "\nAge: " + age +
+                "\nPrice: " + price +
+                "\nVaccinated: " + shots;
+    }
 }

@@ -23,6 +23,11 @@ public class Bird extends Animal {
     }
 
     @Override
+    public int getUniqueAnimalID() {
+        return birdID;
+    }
+
+    @Override
     public String getAnimalType() {
         return "bird";
     }
