@@ -126,7 +126,7 @@ public class Inventory {
      * @param animalType
      * @return
      */
-    public List<Animal> filter(String animalType) {
+    public List<Animal> filterByAnimalType(String animalType) {
         List<Animal> list = new ArrayList();
         for (int i = 0; i < animals.size(); i++) { // Iterate through list of animals
             Animal animal = animals.get(i); // Get an animal/element
@@ -152,5 +152,25 @@ public class Inventory {
                 return supply;
         }
         return null;
+    }
+
+    /**
+     * Search for a supply
+     * @param supplyName
+     * @return
+     */
+    public Supplies searchSupplies(String supplyName) {
+        // Iterate through list of supplies
+        for (int i = 0; i < supplies.size(); i++) {
+            Supplies supply = supplies.get(i); // Get an element/supplies
+            String otherSupplyName = supply.getSupplyName(); // Get that supply's supplyID
+            if (supplyName.equals(otherSupplyName)) // Compare supplyID with otherSUpplyID. If they match return the supply
+                return supply;
+        }
+        return null;
+    }
+
+    public void modifyQuantityOfSupply() {
+
     }
 }

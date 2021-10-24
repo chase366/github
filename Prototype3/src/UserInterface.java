@@ -242,14 +242,14 @@ public class UserInterface {
     }
 
     /**
-     * Filter by an animal
+     * Filter by an animal type ("Dog", "Cat", "Bird")
      */
-    public void filterByAnimal() {
+    public void filterByAnimalType() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter type of animal (dog, cat, or bird): " );
         String animalType = scanner.next();
         String s = animalType.toLowerCase();
-        List<Animal> list = agency.filter(s);
+        List<Animal> list = agency.filterByAnimalType(s);
         print(list);
     }
 
@@ -281,6 +281,92 @@ public class UserInterface {
     }
 
     /**
+     * Search for a user
+     */
+    public void searchUsers() {
+        Scanner scanner = new Scanner(System.in);
+        User user = null;
+
+        System.out.println("1 to search by userID");
+        System.out.println("2 to search by first name and last name");
+        System.out.println("3 to search by username");
+
+        System.out.print("Enter: ");
+        int selection = scanner.nextInt();
+
+        switch (selection) {
+            case 1:
+                System.out.print("Enter userID: ");
+                int userID = scanner.nextInt();
+                user = agency.searchUsers(userID);
+                break;
+            case 2:
+                System.out.print("Enter first name: ");
+                String firstName = scanner.next();
+                System.out.print("\nEnter last name: ");
+                String lastName = scanner.next();
+                user = agency.searchUsers(firstName, lastName);
+            case 3:
+                System.out.print("Enter username: " );
+                String username = scanner.next();
+                user = agency.searchUsers(username);
+        }
+
+        if (user == null) {
+            System.out.println("User not found");
+        } else {
+            System.out.println("User info");
+            System.out.println(user.toString());
+        }
+    }
+
+    /**
+     * Modify the quantity of a supply
+     */
+    public void modifyQuantityOfSupply() {
+        Supplies supply = searchSupplies();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter new quantity of the supply: " );
+        int newQuantity = scanner.nextInt();
+        supply.setQuantity(newQuantity);
+    }
+
+    /**
+     * Search for supplies
+     */
+    public Supplies searchSupplies() {
+        System.out.println("1 to search by supplyID");
+        System.out.println("2 to search by supply name");
+
+        Supplies supply = null;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter: ");
+        int selection = scanner.nextInt();
+
+        switch (selection) {
+            case 1:
+                System.out.print("Enter supplyID: ");
+                int supplyID = scanner.nextInt();
+                supply = agency.searchSupply(supplyID);
+                break;
+            case 2:
+                System.out.print("Enter supply name: ");
+                String supplyName = scanner.next();
+                supply = agency.searchSupply(supplyName);
+                break;
+        }
+
+        if (supply == null) {
+            System.out.println("Supply not found");
+        } else {
+            System.out.println("Supply info");
+            System.out.println(supply.toString());
+        }
+        return supply;
+    }
+
+    /**
      * Display the number of users
      */
     public void numberOfUsers() {
@@ -302,6 +388,7 @@ public class UserInterface {
      */
     public void runProgramWithAdminFeatures() {
         boolean continueRunning = true;
+
         while (continueRunning) {
             Scanner scanner = new Scanner(System.in);
 
@@ -311,7 +398,14 @@ public class UserInterface {
             System.out.println("4 to check number of users in users list");
             System.out.println("5 to remove user");
             System.out.println("6 to remove animal");
-            System.out.println("7 to exit program");
+            System.out.println("7 to filter by animal type ('Dog', 'Cat', 'Bird')");
+            System.out.println("8 to search the animal(s)");
+            System.out.println("9 to search for a user");
+            System.out.println("10 to add supplies");
+            System.out.println("11 to remove supplies");
+            System.out.println("12 to search for a supply");
+            System.out.println("13 to modify quantity of a supply");
+            System.out.println("14 to exit program");
 
             System.out.print("\nEnter: ");
             String selection = scanner.next();
@@ -335,8 +429,30 @@ public class UserInterface {
                     removeUser();
                     break;
                 case "7":
+                    filterByAnimalType();
+                    break;
+                case "8":
+                    searchAnimals();
+                    break;
+                case "9":
+                    searchUsers();
+                    break;
+                case "10":
+                    addSupply();
+                    break;
+                case "11":
+                    removeSupply();
+                    break;
+                case "12":
+                    searchSupplies();
+                    break;
+                case "13":
+                    modifyQuantityOfSupply();
+                    break;
+                case "14":
                     continueRunning = false;
                     break;
+
             }
         }
     }
@@ -347,19 +463,22 @@ public class UserInterface {
      */
     public void runProgramWithAdopterFeatures() {
         boolean continueRunning = true;
+
         while (continueRunning) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("1) Filter by animal");
-            System.out.println("2) Search animal(s)");
-            System.out.println("3) Exit the program");
+            System.out.println("1 to filter by animal type ('Dog', 'Cat', 'Bird')");
+            System.out.println("2 to search animal(s)");
+            System.out.println("3 to search supplies");
+            System.out.println("4 to exit the program");
 
             System.out.print("\nEnter: ");
             String selection = scanner.next();
 
             switch (selection) {
-                case "1": filterByAnimal(); break;
+                case "1": filterByAnimalType(); break;
                 case "2": searchAnimals(); break;
-                case "3": continueRunning = false; break;
+                case "3": searchSupplies(); break;
+                case "4": continueRunning = false; break;
             }
         }
     }
@@ -391,6 +510,12 @@ public class UserInterface {
         agency.addAnimal(animal4);
         agency.addAnimal(animal5);
 
+        Supplies dogChews = new Supplies(23, "DogChews", 20, 5.00);
+        Supplies catPerch = new Supplies(50, "CatPerch", 12, 40.00);
+
+        agency.addSupply(dogChews);
+        agency.addSupply(catPerch);
+
     }
 
     /**
@@ -408,6 +533,7 @@ public class UserInterface {
         addTestCases(); // Add some users to the userList for testing purposes
 
         boolean continueRunning = true;
+
         while (continueRunning) {
             User user = login();
             String userType = user.getUserType(); // Is user an admin or adopter?

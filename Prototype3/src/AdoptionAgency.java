@@ -1,6 +1,4 @@
-import java.util.Scanner;
 import java.util.List;
-import java.util.ArrayList;
 
 public class AdoptionAgency {
     private Inventory inventory;
@@ -50,6 +48,10 @@ public class AdoptionAgency {
         inventory.addSupply(supply);
     }
 
+    public void addSupply(Supplies supply) {
+        inventory.addSupply(supply);
+    }
+
     public boolean removeSupply(int supplyID) {
         return inventory.removeSupply(supplyID);
     }
@@ -76,8 +78,16 @@ public class AdoptionAgency {
 
     public Animal searchAnimal(int animalID) { return inventory.searchAnimals(animalID); }
 
-    public List<Animal> filter(String animalType) {
-        return inventory.filter(animalType);
+    public List<Animal> filterByAnimalType(String animalType) {
+        return inventory.filterByAnimalType(animalType);
+    }
+
+    public Supplies searchSupply(int supplyID) {
+       return inventory.searchSupplies(supplyID);
+    }
+
+    public Supplies searchSupply(String supplyName) {
+        return inventory.searchSupplies(supplyName);
     }
 
     public String getAdopterInformation(int userID) {

@@ -32,4 +32,11 @@ public class Role {
     public String getRoleName() {
         return roleName;
     }
+
+    @Override
+    public String toString() {
+        return "roleID: " + roleID +
+                "\nrole name: " + roleName +
+                "\n role description: " + description;
+    }
 }
